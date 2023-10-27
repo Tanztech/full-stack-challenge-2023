@@ -9,9 +9,12 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Referral Database') }}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css" />
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @livewireStyles
 </head>
 <body>
     <div id="app">
@@ -36,7 +39,9 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        &nbsp;
+                        &nbsp;  <li><a href="{{ route('users-view') }}"> Users </a></li>
+                            <li><a href="/referrals/"> Referral </a></li>
+
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -44,7 +49,7 @@
                         <!-- Authentication Links -->
                         @guest
                             <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
+{{--                            <li><a href="{{ route('register') }}">Register</a></li>--}}
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
@@ -53,9 +58,7 @@
 
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a href="{{ route('add-referral') }}">
-                                            Add Referral
-                                        </a>
+
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -79,18 +82,14 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
+    @livewireScripts
     <script type="text/javascript">
         $(document).ready(function(){
-            $("#filter").click(function(){
-                var country = $("#country").val();
-                if(country == undefined) {
-                    country = $("#city").val();
-                }
-                var divider = window.location.href.substr(-1) == '/' ? '' : '/'
-                window.location.href = window.location.origin + window.location.pathname + divider + country;
-                // console.log($("#country").val());
-            });
+
+            $('#data-table').DataTable({  responsive: true});
         });
     </script>
+
 </body>
 </html>

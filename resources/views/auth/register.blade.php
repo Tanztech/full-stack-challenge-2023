@@ -39,6 +39,25 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('role') ? ' has-error' : '' }}">
+                            <label for="email" class="col-md-4 control-label">User Role</label>
+
+                            <div class="col-md-6">
+
+                                    <select class="form-select w-100" style="width: 100%!important; height: 35px" name="role" aria-label="Default select example" >
+                                        <option value="">-- select role -- </option>
+                                        <option value="admin">Admin</option>
+                                        <option value="supervisor">Supervisor</option>
+                                        <option value="executive">Executive</option>
+                                    </select>
+                                @if ($errors->has('role'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('role') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-4 control-label">Password</label>
 

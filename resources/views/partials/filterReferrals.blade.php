@@ -1,6 +1,6 @@
 
 
-@if($country_filter == true) 
+@if($country_filter )
 <h4>{{ head($countries) }} @if(count($cities) == 1) - {{ head($cities) }} @endif</h4>
 <a class="btn btn-danger" href="{{ url('referrals/') }}">Remove filters</a>
 @endif
@@ -13,13 +13,13 @@
 		@endforeach
 	</select>
 	<button class="btn btn-primary" id="filter">Filter</button>
-@elseif(count($countries) > 1) 
+@elseif(count($countries) > 1)
 <label for="country">Countries</label>
 <select id="country">
 		<option value="">All</option>
 	@foreach ($countries as $country)
 	    <option value="{{ $country }}">{{ $country  }}</p>
 	@endforeach
-</select>	
+</select>
 <button class="btn btn-primary" id="filter">Filter</button>
 @endif
