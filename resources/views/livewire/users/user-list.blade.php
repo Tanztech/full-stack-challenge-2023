@@ -3,12 +3,12 @@
 
         @if (session()->has('error'))
             <div class="alert alert-danger">
-                {{ $message }}
+                {{  session('error') }}
             </div>
         @endif
         @if (session()->has('success'))
             <div class="alert alert-success">
-                {{ $message }}
+                {{  session('success') }}
             </div>
         @endif
         <button class="btn btn-info px-3 py-2" data-toggle="modal" data-target=".open_modal" ><i class="bi bi-person-plus"></i> Add user </button>

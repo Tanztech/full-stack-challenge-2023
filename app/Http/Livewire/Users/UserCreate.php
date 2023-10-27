@@ -27,9 +27,8 @@ class UserCreate extends Component
     }
 
     public function add_user(){
-        $data = $this->validate();
-        $data['status'] = 'active';
-        dd($data);
+         $this->validate();
+
         if (User::create([
             'name' => $this->name,
             'email' => $this->email,
